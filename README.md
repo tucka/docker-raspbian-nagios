@@ -3,7 +3,7 @@ Docker image for Nagios
 
 Fork of JasonRivers/Docker-Nagios
 
-Nagios Core 4.3.0 running on Debian with NagiosGraph & NRPE
+Nagios Core 4.3.1 running on Debian with NagiosGraph & NRPE
 
 ### Configurations
 Nagios Configuration lives in /opt/nagios/etc

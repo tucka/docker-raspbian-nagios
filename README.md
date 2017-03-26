@@ -1,9 +1,9 @@
 # Docker-Nagios
 Docker image for Nagios
 
-Fork of JasonRivers/Docker-Nagios
+!!!Fork of JasonRivers/Docker-Nagios!!!
 
-Nagios Core 4.3.1 running on Debian with NagiosGraph & NRPE
+Nagios Core latest running on Debian with NagiosGraph & NRPE
 
 ### Configurations
 Nagios Configuration lives in /opt/nagios/etc
@@ -12,7 +12,7 @@ NagiosGraph configuration lives in /opt/nagiosgraph/etc
 ### Install
 
 ```sh
-docker pull smeretech/docker-nagios-deb:latest
+docker pull smeretech/docker-debian-nagios:latest
 ```
 
 ### Running
@@ -20,7 +20,7 @@ docker pull smeretech/docker-nagios-deb:latest
 Run with the example configuration with the following:
 
 ```sh
-docker run --name nagios -p 0.0.0.0:8080:80 smeretech/docker-nagios-deb:latest
+docker run --name nagios -p 0.0.0.0:8080:80 smeretech/docker-debian-nagios:latest
 ```
 
 alternatively you can use external Nagios configuration & log data with the following:
@@ -30,7 +30,7 @@ docker run --name nagios  \
   -v /path-to-nagios/etc/:/opt/nagios/etc/ \
   -v /path-to-nagios/var:/opt/nagios/var/ \
   -v /path-to-custom-plugins:/opt/Custom-Nagios-Plugins \
-  -p 0.0.0.0:8080:80 jasonrivers/nagios:latest
+  -p 0.0.0.0:8080:80 smeretech/docker-debian-nagios:latest
 ```
 
 Note: The path for the custom plugins will be /opt/Custom-Nagios-Plugins, you will need to reference this directory in your configuration scripts.

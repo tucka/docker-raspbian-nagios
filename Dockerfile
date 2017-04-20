@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM resin/rpi-raspbian:latest
 MAINTAINER Stefano Mereghetti <docker@smereghetti.com>
 
 ENV NAGIOS_HOME			/opt/nagios
@@ -59,8 +59,8 @@ RUN	sed -i 's/universe/universe multiverse/' /etc/apt/sources.list	;\
 		libnet-tftp-perl					\
 		libredis-perl						\
 		libswitch-perl						\
-		libwww-perl							\
-		libjson-perl					&&	\
+		libwww-perl						\
+		libjson-perl					&&      \
 		apt-get clean
 
 RUN	( egrep -i "^${NAGIOS_GROUP}"    /etc/group || groupadd $NAGIOS_GROUP    )				&&	\
@@ -102,7 +102,7 @@ RUN	cd /tmp							&&	\
 	make install-commandmode				&&	\
 	SESSIONCRYPT=`cat /tmp/nagioscore/sample-config/httpd.conf | awk '/SessionCryptoPassphrase/ {print $2}' | tail -1`		&& \
 	make install-webconf					&&	\
-	make clean
+	echo 'NOT WORKING: make clean'
 
 RUN	cd /tmp							&&	\
 	git clone https://github.com/nagios-plugins/nagios-plugins.git -b release-2.2.0		&&	\
@@ -120,8 +120,8 @@ RUN	cd /tmp							&&	\
 	git clone https://github.com/NagiosEnterprises/nrpe.git	-b 3.0.1	&&	\
 	cd nrpe							&&	\
 	./configure							\
-		--with-ssl=/usr/bin/openssl				\
-		--with-ssl-lib=/usr/lib/x86_64-linux-gnu	&&	\
+  		--with-ssl=/usr/bin/openssl                             \
+                --with-ssl-lib=/usr/lib/arm-linux-gnueabihf             &&      \
 	make check_nrpe						&&	\
 	cp src/check_nrpe ${NAGIOS_HOME}/libexec/		&&	\
 	make clean

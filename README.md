@@ -1,18 +1,18 @@
 # Docker-Nagios
 Docker image for Nagios
 
-!!!Fork of JasonRivers/Docker-Nagios!!!
+!!!Fork of smeretech/docker-debian-nagios who forked JasonRivers/Docker-Nagios!!!
 
-Nagios Core latest running on Debian with NagiosGraph & NRPE
+Nagios Core 4.3.1  running on Raspbian with NagiosGraph & NRPE, tested on Raspberry Pi 3
 
 ### Configurations
 Nagios Configuration lives in /opt/nagios/etc
 NagiosGraph configuration lives in /opt/nagiosgraph/etc
 
-### Install
+### Build
 
 ```sh
-docker pull smeretech/docker-debian-nagios:latest
+docker build -t nagios_image .
 ```
 
 ### Running
@@ -20,7 +20,7 @@ docker pull smeretech/docker-debian-nagios:latest
 Run with the example configuration with the following:
 
 ```sh
-docker run --name nagios -p 0.0.0.0:8080:80 smeretech/docker-debian-nagios:latest
+docker run --name nagios -p 0.0.0.0:8080:80 nagios_image
 ```
 
 alternatively you can use external Nagios configuration & log data with the following:
@@ -30,7 +30,7 @@ docker run --name nagios  \
   -v /path-to-nagios/etc/:/opt/nagios/etc/ \
   -v /path-to-nagios/var:/opt/nagios/var/ \
   -v /path-to-custom-plugins:/opt/Custom-Nagios-Plugins \
-  -p 0.0.0.0:8080:80 smeretech/docker-debian-nagios:latest
+  -p 0.0.0.0:8080:80 nagios_image
 ```
 
 Note: The path for the custom plugins will be /opt/Custom-Nagios-Plugins, you will need to reference this directory in your configuration scripts.
@@ -43,7 +43,7 @@ The default credentials for the web interface is `nagiosadmin` / `nagios`
 
 #### Shell
 
-sudo docker exec -it nagios bash
+sudo docker exec -it nagios_image bash
 
 ### Extra Plugins
 

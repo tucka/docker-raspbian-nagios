@@ -117,7 +117,7 @@ RUN	cd /tmp							&&	\
 	ln -sf /opt/nagios/libexec/utils.pm /usr/lib/nagios/plugins
 
 RUN	cd /tmp							&&	\
-	git clone https://github.com/NagiosEnterprises/nrpe.git	-b 3.0.1	&&	\
+	git clone https://github.com/NagiosEnterprises/nrpe.git	-b nrpe-3.0.1	&&	\
 	cd nrpe							&&	\
 	./configure							\
   		--with-ssl=/usr/bin/openssl                             \

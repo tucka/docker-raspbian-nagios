@@ -1,7 +1,7 @@
 FROM resin/rpi-raspbian:latest
 MAINTAINER Stefano Mereghetti <docker@smereghetti.com>
 
-ENV NAGIOS_HOME			/opt/nagios
+ENV NAGIOS_HOME			/usr/local/nagios
 ENV NAGIOS_USER			nagios
 ENV NAGIOS_GROUP		nagios
 ENV NAGIOS_CMDUSER		nagios
@@ -202,6 +202,9 @@ ENV APACHE_LOG_DIR /var/log/apache2
 #Set ServerName for Apache
 RUN echo "ServerName nagiosdocker" > /etc/apache2/conf-available/servername.conf	&& \
     ln -s /etc/apache2/conf-available/servername.conf /etc/apache2/conf-enabled/servername.conf
+
+# Create Symoblic Link for exec_files
+RUN ln -s /opt/nagios/libexec /usr/local/nagios/libexec
 
 EXPOSE 80
 

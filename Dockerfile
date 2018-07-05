@@ -86,7 +86,7 @@ RUN	cd /tmp							&&	\
 ADD httpd.conf.patch /tmp/
 	
 RUN	cd /tmp							&&	\
-	git clone https://github.com/NagiosEnterprises/nagioscore.git -b nagios-4.3.1		&&	\
+	git clone https://github.com/NagiosEnterprises/nagioscore.git -b nagios-4.3.4		&&	\
 	cd nagioscore						&&	\
 	./configure							\
 		--prefix=${NAGIOS_HOME}					\
@@ -105,7 +105,7 @@ RUN	cd /tmp							&&	\
 	echo 'NOT WORKING: make clean'
 
 RUN	cd /tmp							&&	\
-	git clone https://github.com/nagios-plugins/nagios-plugins.git -b release-2.2.0		&&	\
+	git clone https://github.com/nagios-plugins/nagios-plugins.git -b release-2.2.1		&&	\
 	cd nagios-plugins					&&	\
 	./tools/setup						&&	\
 	./configure							\
@@ -117,7 +117,7 @@ RUN	cd /tmp							&&	\
 	ln -sf /opt/nagios/libexec/utils.pm /usr/lib/nagios/plugins
 
 RUN	cd /tmp							&&	\
-	git clone https://github.com/NagiosEnterprises/nrpe.git	-b 3.0.1	&&	\
+	git clone https://github.com/NagiosEnterprises/nrpe.git	-b nrpe-3.2.1	&&	\
 	cd nrpe							&&	\
 	./configure							\
   		--with-ssl=/usr/bin/openssl                             \

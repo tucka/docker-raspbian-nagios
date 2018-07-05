@@ -3,7 +3,7 @@ Docker image for Nagios
 
 !!!Fork of smeretech/docker-debian-nagios who forked JasonRivers/Docker-Nagios!!!
 
-Nagios Core 4.3.1  running on Raspbian with NagiosGraph & NRPE, tested on Raspberry Pi 3
+Nagios Core 4.3.4  running on Raspbian with NagiosGraph & NRPE, tested on Raspberry Pi 3
 
 ### Configurations
 Nagios Configuration lives in /opt/nagios/etc
